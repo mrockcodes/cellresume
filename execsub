@@ -1,0 +1,8 @@
+Sub RunJavaScript()
+    ' Replace "your_javascript_code.js" with the actual path to your JavaScript file
+    Dim jsFile As String
+    jsFile = "C:\path\to\your\javascript\file.js"
+
+    ' Assuming you have a way to execute the JavaScript file (e.g., using Node.js)
+    Shell "node " & jsFile, vbNormalFocus
+End Sub
