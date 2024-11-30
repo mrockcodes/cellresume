@@ -1,0 +1,51 @@
+Sub GenerateResume()
+    Dim name As String
+    Dim email As String
+    Dim phone As String
+    Dim summary As String
+    Dim skills As String
+    Dim experience As String
+
+    ' Get input from Excel cells
+    name = Range("A2").Value
+    email = Range("A3").Value
+    phone = Range("A4").Value
+    summary = Range("A5").Value
+    skills = Range("A6").Value
+    experience = Range("A7").Value
+
+    ' **Here's where you'd integrate AI**
+    Dim aiSummary As String
+    aiSummary = CallAIAPI(summary)
+
+    Dim aiSkills As String
+    aiSkills = CallAIAPI(skills)
+
+    Dim aiExperience As String
+    aiExperience = CallAIAPI(experience)
+
+    ' Create a new Word document
+    Dim wordApp As Object
+    Set wordApp = CreateObject("Word.Application")
+    wordApp.Visible = True
+    Dim wordDoc As Object
+    Set wordDoc = wordApp.Documents.Add 1 
+
+    ' Add content to the Word document
+    wordDoc.Paragraphs.Add.Range.Text = "Name: " & name & vbCrLf
+    wordDoc.Paragraphs.Add.Range.Text = "Email: " & email & vbCrLf
+    wordDoc.Paragraphs.Add.Range.Text = "Phone: " & phone & vbCrLf
+    wordDoc.Paragraphs.Add.Range.Text = "Summary: " & aiSummary & vbCrLf
+    wordDoc.Paragraphs.Add.Range.Text = "Skills: " & aiSkills & vbCrLf
+    wordDoc.Paragraphs.Add.Range.Text = "Experience: " & aiExperience & vbCrLf
+
+    ' ... Add more sections as needed ...
+End Sub
+
+Function CallAIAPI(input As String) As String
+    ' Implement the logic to send the input to an AI API and receive the enhanced output
+    ' You can use libraries or web requests to interact with the API.
+
+    ' This is a placeholder. Replace with actual API integration
+    CallAIAPI = "Enhanced text from AI based on: " & input
+End Function
