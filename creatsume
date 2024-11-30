@@ -1,0 +1,33 @@
+Sub GenerateResume()
+    Dim name As String
+    Dim email As String
+    Dim phone As String
+    Dim summary As String
+
+    ' Get input from Excel cells
+    name = Range("A2").Value
+    email = Range("A3").Value
+    phone = Range("A4").Value
+    summary = Range("A5").Value
+
+    ' **Here's where you'd integrate AI**
+    ' You can use a web service or API to send the 'summary' to an AI model
+    ' and receive enhanced text. For example, using a hypothetical AI API:
+    Dim aiSummary As String
+    aiSummary = CallAIAPI(summary)
+
+    ' Create a new Word document
+    Dim wordApp As Object
+    Set wordApp = CreateObject("Word.Application")
+    wordApp.Visible = True
+    Dim wordDoc As Object
+    Set wordDoc = wordApp.Documents.Add 1 
+
+    ' Add content to the Word document
+    wordDoc.Paragraphs.Add.Range.Text = "Name: " & name & vbCrLf
+    wordDoc.Paragraphs.Add.Range.Text = "Email: " & email & vbCrLf
+    wordDoc.Paragraphs.Add.Range.Text = "Phone: " & phone & vbCrLf
+    wordDoc.Paragraphs.Add.Range.Text = "Summary: " & aiSummary & vbCrLf
+
+    ' ... Add more sections as needed ...
+End Sub
