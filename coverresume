@@ -1,0 +1,15 @@
+Sub GenerateResumeAndCoverLetter()
+    ' ... (existing code for resume generation) ...
+
+    ' Generate Cover Letter
+    Dim coverLetterPrompt As String
+    coverLetterPrompt = "Write a cover letter for a job application to [Job Title] at [Company Name]. Highlight my skills in [Skill 1], [Skill 2], and [Skill 3], and my experience in [Experience 1] and [Experience 2]."
+
+    Dim aiCoverLetter As String
+    aiCoverLetter = CallAIAPI(coverLetterPrompt)
+
+    ' Add cover letter to the Word document
+    wordDoc.Paragraphs.Add
+    wordDoc.Paragraphs.Last.Range.Text = aiCoverLetter
+
+End Sub
